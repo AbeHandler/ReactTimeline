@@ -9,3 +9,6 @@ Then in a separate terminal
 ```
 $ cd public && python -m http.server
 ```
+
+
+![alt text](screen.png")
