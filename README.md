@@ -11,4 +11,4 @@ $ cd public && python -m http.server
 ```
 
 
-![alt text]("img/screen.png")
+![alt text](img/screen.png)
