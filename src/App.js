@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
+import ReactHoverDelayTrigger from 'react-hover-delay-trigger';
+
 import Card from 'react-bootstrap/Card';
 
 import Sparkline from "./Sparkline.jsx";
@@ -93,6 +95,7 @@ export default class TemporalLinePlot extends React.Component{
                  click_tracker: -1,
                  chart_mode: "intro",
                  all_results: sents,
+                 show_tooltip:false,
                  start_selected:min,
                  end_selected:max,
                  selected_doc: -1,
@@ -279,6 +282,14 @@ export default class TemporalLinePlot extends React.Component{
   }
 
 
+  handleHoverTrigger(){
+      this.setState({show_tooltip: true})
+  }
+
+  handleHoverCancel(){
+     this.setState({show_tooltip: false})
+  }
+
 
   render() {
 
@@ -290,6 +301,7 @@ export default class TemporalLinePlot extends React.Component{
            mouse_move_in_chart={this.mouse_move_in_chart}
            f={this.state.f}
            q={this.props.q}
+           show_tooltip={this.state.show_tooltip}
            turnoff_drag={this.turnoff_drag.bind(this)}
            handle_mouse_up_in_rect_mode={this.handle_mouse_up_in_rect_mode}
            toggle_both_drags_start={() => this.setState({drag_l: true, summary_page: 0, drag_r: true}) }
@@ -318,11 +330,41 @@ export default class TemporalLinePlot extends React.Component{
            keys={chart_bins}/>
 
     let debug = "start: " + this.state.start_selected.toString() + ", " + "end: " +  this.state.end_selected.toString();
-    return(<div><Container>
-                  <Row id="chart_row">{chart}</Row>
-                  </Container>
-                  <Container>
-                  <Row>{debug}</Row>
-                  </Container>
-                  </div>)}
+    let tt  = this.state.show_tooltip;
+
+    /*  <Row id="chart_row">
+        <ReactHoverDelayTrigger 
+        delay={500}
+        handleHoverTrigger={this.handleHoverTrigger.bind(this)}
+        handleHoverCancel={this.handleHoverCancel.bind(this)}>
+        {chart}
+        </ReactHoverDelayTrigger>
+      </Row> */
+
+    /*
+    <div>
+           <Container>
+           </Container>
+           <Container>
+                    <Row>{debug}</Row>
+                    <span>{tt.toString()}</span>
+          </Container>
+          </div>*/
+    return(<div>
+              <Row id="chart_row">
+              <Container>
+                <ReactHoverDelayTrigger 
+                delay={500}
+                handleHoverTrigger={this.handleHoverTrigger.bind(this)}
+                handleHoverCancel={this.handleHoverCancel.bind(this)}>
+                {chart}
+                </ReactHoverDelayTrigger>
+                </Container>
+              </Row>
+              <div>
+              {debug}
+              <span>{tt.toString()}</span>
+              </div>
+            </div>);
+  }
 }
