@@ -222,6 +222,14 @@ export default class Chart extends React.Component{
     return x_loc_adjusted;
   }
 
+  mouse_date_position(){
+      let dt = new Date(this.props.mouse_date);
+      let x_scale = this.get_x_scale();
+
+      let x_loc_adjusted = x_scale(dt);
+      return x_loc_adjusted;
+  }
+
   render() {
 
     {/* actual plot height is the height of the line plot itself rather than the height of the chart component which also includes x axis */}
@@ -292,9 +300,11 @@ export default class Chart extends React.Component{
 
     let q_line = <path onMouseLeave={e=>this.setState({mouse_x:-1, mouse_y:-1})} onMouseMove={e =>this.setState({mouse_x:e.pageX})} d={ps} fill="#0028a3" opacity=".25" stroke="grey"/>
 
-    let tt = "";
+    let md = this.mouse_date_position()
+    let tt = <Tooltip x={md}></Tooltip>
     if (this.props.show_tooltip){
-      tt = <Tooltip></Tooltip>
+      console.log(md)
+      tt = <Tooltip x={md}></Tooltip>
     }
 
     let plot = <svg

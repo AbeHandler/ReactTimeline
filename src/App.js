@@ -14,7 +14,6 @@ import Sparkline from "./Sparkline.jsx";
 import QueryBar from "./QueryBar.jsx";
 import SparklineGrid from "./SparklineGrid.jsx";
 
-import Tooltip from "./Tooltip.jsx"
 
 import Chart from './Chart.jsx';
 
@@ -303,6 +302,7 @@ export default class TemporalLinePlot extends React.Component{
            mouse_move_in_chart={this.mouse_move_in_chart}
            f={this.state.f}
            q={this.props.q}
+           mouse_date={this.state.mouse_date}
            show_tooltip={this.state.show_tooltip}
            turnoff_drag={this.turnoff_drag.bind(this)}
            handle_mouse_up_in_rect_mode={this.handle_mouse_up_in_rect_mode}
