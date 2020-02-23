@@ -337,7 +337,7 @@ export default class TemporalLinePlot extends React.Component{
               <Row id="chart_row">
               <Container>
                 <ReactHoverDelayTrigger 
-                delay={500}
+                delay={100}
                 handleHoverTrigger={this.handleHoverTrigger.bind(this)}
                 handleHoverCancel={this.handleHoverCancel.bind(this)}>
                 {chart}
