@@ -14,6 +14,8 @@ import Sparkline from "./Sparkline.jsx";
 import QueryBar from "./QueryBar.jsx";
 import SparklineGrid from "./SparklineGrid.jsx";
 
+import Tooltip from "./Tooltip.jsx"
+
 import Chart from './Chart.jsx';
 
 import XAxis from "./XAxis.jsx";
@@ -330,26 +332,7 @@ export default class TemporalLinePlot extends React.Component{
            keys={chart_bins}/>
 
     let debug = "start: " + this.state.start_selected.toString() + ", " + "end: " +  this.state.end_selected.toString();
-    let tt  = this.state.show_tooltip;
 
-    /*  <Row id="chart_row">
-        <ReactHoverDelayTrigger 
-        delay={500}
-        handleHoverTrigger={this.handleHoverTrigger.bind(this)}
-        handleHoverCancel={this.handleHoverCancel.bind(this)}>
-        {chart}
-        </ReactHoverDelayTrigger>
-      </Row> */
-
-    /*
-    <div>
-           <Container>
-           </Container>
-           <Container>
-                    <Row>{debug}</Row>
-                    <span>{tt.toString()}</span>
-          </Container>
-          </div>*/
     return(<div>
               <Row id="chart_row">
               <Container>
@@ -363,7 +346,7 @@ export default class TemporalLinePlot extends React.Component{
               </Row>
               <div>
               {debug}
-              <span>{tt.toString()}</span>
+              <span>{this.state.show_tooltip.toString()}</span>
               </div>
             </div>);
   }

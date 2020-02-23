@@ -8,6 +8,8 @@ var d3 = require('d3');
 var _ = require('lodash');
 var moment = require('moment');
 
+
+import Tooltip from "./Tooltip.jsx"
 import XAxis from "./XAxis.jsx";
 import YAxis from "./YAxis.jsx";
 
@@ -290,7 +292,11 @@ export default class Chart extends React.Component{
 
     let q_line = <path onMouseLeave={e=>this.setState({mouse_x:-1, mouse_y:-1})} onMouseMove={e =>this.setState({mouse_x:e.pageX})} d={ps} fill="#0028a3" opacity=".25" stroke="grey"/>
 
-    
+    let tt = "";
+    if (this.props.show_tooltip){
+      tt = <Tooltip></Tooltip>
+    }
+
     let plot = <svg
             onMouseMove={e=> this.handle_mouse_move(e.pageX)}
             onMouseLeave={this.turnoff_drag.bind(this)}
@@ -301,10 +307,15 @@ export default class Chart extends React.Component{
             {q_line}
             {hilite_line}
             {f_line}
+            {tt}
             {rec}
             {l_left}
             {l_right}
             </svg>
+    
+
+
+
     return (
         <Card ref="chart_panel" style={{"width": "100%"}}>
 

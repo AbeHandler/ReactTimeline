@@ -7,9 +7,12 @@ export default class Tooltip extends React.Component{
     render(){
 
         return(
-            <svg width="400" height="110">
-              <rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
-            </svg>
+            <g>
+              <rect x={5} rx="5" ry="5" y={5} opacity={1} stroke="grey" strokeWidth="2" height={40} width={110} fill="white"/>
+              <text style={{backgroundColor: "white"}} x={5 + 9} y={5 + 20} opacity={1} height="10" width="23" fill="black">
+              blah
+              </text>
+              </g>
             )
         
     }
