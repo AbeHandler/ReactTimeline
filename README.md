@@ -1,3 +1,7 @@
+A standalone interactive timeline plot, used in [Rookie](https://arxiv.org/pdf/1708.01944.pdf).
+
+#### Setup
+
 ```
 $ git clone git@github.com:AbeHandler/ReactTimeline.git
 $ npm i
