@@ -1,4 +1,4 @@
-A standalone interactive timeline plot, used in [Rookie](https://arxiv.org/pdf/1708.01944.pdf).
+A standalone interactive timeline plot built w/ React and SVG and used in [Rookie](https://arxiv.org/pdf/1708.01944.pdf).
 
 #### Setup
 
