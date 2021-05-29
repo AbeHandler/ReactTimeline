@@ -14,5 +14,6 @@ Then in a separate terminal
 $ cd public && python -m http.server
 ```
 
+#### Expected output
 
 ![alt text](img/screen.png)
